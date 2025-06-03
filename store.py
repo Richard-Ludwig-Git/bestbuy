@@ -15,15 +15,23 @@ class Store:
         total_quantity = 0
         for item in self.in_store:
             total_quantity += item.Quantity
-        return total_quantity
+        print("--------------------------------------------")
+        print(f"Total of {total_quantity} items in store")
+        print("--------------------------------------------")
 
 
     def get_all_products(self):
         active_products = []
+        print("-------------------------------------------------------")
+        counter = 1
         for item in self.in_store:
             if item.is_active():
                 active_products.append(item)
-        return active_products
+                print(f"{counter}. ", end="")
+                item.show()
+                counter += 1
+
+        print("-------------------------------------------------------")
 
     def order(self, shopping_list):
         total_price = 0
