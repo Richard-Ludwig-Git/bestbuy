@@ -1,50 +1,59 @@
 
 class Product:
+    """handles the key methods and init for the products"""
     def __init__(self, name=None, price=0, quantity=0):
-        self.Name = name
+        """construction parameter validation and initialisation"""
+        self.name = name
         if name is None:
             raise Exception("Name is not allowed to be empty")
-        self.Price = price
+        self.price = price
         if price<0:
             raise Exception("Price could not be negative")
-        self.Quantity = quantity
+        self.quantity = quantity
         if quantity < 0:
             raise Exception("Quantity could not be negative")
-        self.Active = True
+        self.active = True
 
 
     def get_quantity(self):
-        return self.Quantity
+        """getter for the quantity of the product"""
+        return self.quantity
 
 
     def set_quantity(self, quantity):
-        self.Quantity = quantity
+        """setter of the quantity of the product and activ change if 0"""
+        self.quantity = quantity
         if quantity <= 0:
-            self.Active = False
+            self.active = False
 
 
     def is_active(self):
-        if self.Active:
+        """getter for the bool activ status of the product"""
+        if self.active:
             return True
         else:
             return False
 
 
     def deactivate(self):
-        self.Active = False
+        """to deactivate the product by method"""
+        self.active = False
 
 
     def activate(self):
-        self.Active = True
+        """to activate the product by method"""
+        self.active = True
 
 
     def show(self):
-        print(f"{self.Name}, Price: {self.Price}, Quantity: {self.Quantity}")
+        """simple print of name, price and quantity of the product"""
+        print(f"{self.name}, Price: {self.price}, Quantity: {self.quantity}")
 
 
     def buy(self, quantity):
+        """handle quantity and total price if product is bougth"""
         try:
-            self.Quantity -= int(quantity)
-            return self.Price * int(quantity)
+            self.quantity -= int(quantity)
+            return self.price * int(quantity)
         except ValueError:
             return "Sorry, wrong Value"

@@ -6,7 +6,8 @@ product_list = [ product.Product("MacBook Air M2", price=1450, quantity=100),
                ]
 best_buy = store.Store(product_list)
 
-def start(store_object):
+def start():
+    """Main Menu to run the user-choice funconality"""
     menu = {
         "1": best_buy.get_all_products,
         "2": best_buy.get_total_quantity,
@@ -20,6 +21,7 @@ def start(store_object):
 
 
 def make_order():
+    """User order, with input validation and sumup"""
     best_buy.get_all_products()
     print("When you want to finish order, enter empty text")
     ordering = True
@@ -27,7 +29,6 @@ def make_order():
     while ordering:
         userproduct_choice = input("Which product # do you want? ")
         userproduct_quantity = input("What amount do you want? ")
-
         if userproduct_quantity == "" and userproduct_quantity == "":
             ordering = False
             break
@@ -43,7 +44,8 @@ def make_order():
 
 
 def main():
-    start(best_buy)
+    """Main function to start the program"""
+    start()
 
 
 if __name__ == "__main__":
